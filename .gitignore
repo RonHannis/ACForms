@@ -6,3 +6,4 @@ ACForms.UiPath/
 ACForms.Web/bin
 ACForms.Web/obj
 ACForms.Web/processors
+*.suo
