@@ -6,4 +6,8 @@ ACForms.UiPath/
 ACForms.Web/bin
 ACForms.Web/obj
 ACForms.Web/processors
+ACForms.Web/ACForms.Web.csproj
+ACForms.Web/ACForms.Web.csproj.user
+ACForms.Web/Program.cs
 *.suo
+.vs/
