@@ -1,0 +1,10 @@
+<mat-form-field appearance="fill" [formGroup]="group">
+  <mat-label *ngIf="question.label">{{question.label}}</mat-label>
+  <input type="text"
+         matInput
+         [mask]="question.mask"
+         [required]="!ignoreReq && question.required"
+         [dropSpecialCharacters]="false"
+         [formControlName]="question.formKey" />
+  <mat-hint>{{question.hint}}</mat-hint>
+</mat-form-field>

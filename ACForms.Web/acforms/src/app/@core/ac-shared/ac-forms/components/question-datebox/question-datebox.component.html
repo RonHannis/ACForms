@@ -1,0 +1,15 @@
+<mat-form-field appearance="fill" [formGroup]="group">
+  <mat-label *ngIf="question.label">{{question.label}}</mat-label>
+  <input matInput
+         mask="M0/d0/0000"
+         placeholder="MM/DD/YYYY"
+         [required]="!ignoreReq && question.required"
+         [formControlName]="question.formKey"
+         [dropSpecialCharacters]="false" />
+  <mat-hint>MM/DD/YYYY</mat-hint>
+
+  <!--Cannot use ngx-mask with material datepicker until there is a solution to multiple value accessors. keeping control commented-->
+  <!--<input style="display:none" matInput [matDatepicker]="picker1" [formControlName]="question.formKey" [disabled]="question.readOnly" />
+  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+  <mat-datepicker #picker1></mat-datepicker>-->
+</mat-form-field>

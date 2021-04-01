@@ -1,0 +1,24 @@
+<div class="row">
+  <label class="col-form-label col-sm-3">
+    {{question.label}} <span *ngIf="question.required">*</span>
+    <span *ngIf="q.invalid" class="mat-error">
+      <span *ngIf="q.errors.required" >
+        (required)
+      </span>
+    </span>
+  </label>
+  <div class="col-sm-9" [formGroup]="group">
+    <mat-radio-group class="question-radio-group" [formControlName]="question.formKey" (change)="onOptionClick($event)">
+      <mat-radio-button *ngFor="let option of question.options" class="question-radio-button" [name]="question.key + index" [id]="question.key + option + index" [value]="option">
+        {{option}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <div *ngFor="let q of question.questions" [ngSwitch]="q.type">
+      <!--<app-question-check-with-text [question]="q" *ngSwitchCase="questionTypes.CheckWithText"></app-question-check-with-text>-->
+      <app-question-textbox [question]="q" *ngSwitchCase="questionTypes.Text" [group]="group">
+      </app-question-textbox>
+      <app-question-datebox [question]="q" *ngSwitchCase="questionTypes.Date" [group]="group">
+      </app-question-datebox>
+    </div>
+  </div>
+</div>

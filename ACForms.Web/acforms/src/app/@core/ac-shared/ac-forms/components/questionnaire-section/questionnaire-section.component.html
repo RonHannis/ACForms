@@ -1,0 +1,28 @@
+<h2 class="section-title">{{section.label}}</h2>
+<hr />
+<h6 class="section-subtitle" *ngIf="section.subLabel">{{section.subLabel}}</h6>
+
+<markdown *ngIf="section.markdownText" [data]="section.markdownText"></markdown>
+
+<div class="questions">
+  <div *ngFor="let q of section.questions; let odd = odd" class="question" [class.odd]="odd2" [ngSwitch]="q.type">
+    <ng-container *ngIf="isVisible(q)">
+      <app-custom-question-textbox [question]="q" *ngSwitchCase="questionTypes.Text" [group]="group" (onChange)="onTextChange($event)">
+      </app-custom-question-textbox>
+      <app-question-textarea [question]="q" *ngSwitchCase="questionTypes.TextArea" [group]="group">
+      </app-question-textarea>
+      <app-question-datebox [question]="q" *ngSwitchCase="questionTypes.Date" [group]="group">
+      </app-question-datebox>
+      <app-custom-question-radio [question]="q" *ngSwitchCase="questionTypes.SelectOne" [group]="group" (onSelect)="onOptionChanged($event)">
+      </app-custom-question-radio>
+      <app-question-check-with-text [question]="q" *ngSwitchCase="questionTypes.CheckWithText" [group]="group">
+      </app-question-check-with-text>
+      <app-question-custom-collection [question]="q" *ngSwitchCase="questionTypes.CustomCollection"
+                                      [group]="group"></app-question-custom-collection>
+      <app-question-textbox [question]="q" *ngSwitchDefault [group]="group"></app-question-textbox>
+    </ng-container>
+  </div>
+</div>
+
+<app-questionnaire-section *ngFor="let s of section.sections" [section]="s" [group]="group">
+</app-questionnaire-section>

@@ -1,0 +1,11 @@
+<div class="row" [formGroup]="group">
+  <mat-checkbox class="example-margin" [formControlName]="question.formKey">{{question.label}}</mat-checkbox>
+  <div class="col-sm-9" *ngIf="question.questions">
+    <div *ngFor="let q of question.questions" [ngSwitch]="q.type">
+      <!--<app-question-radio [question]="q" [group]="group" *ngSwitchCase="questionTypes.SelectOne"></app-question-radio>
+      <app-question-check-with-text [question]="q" [group]="group" *ngSwitchCase="questionTypes.CheckWithText"></app-question-check-with-text>-->
+      <app-question-textbox [question]="q" [ignoreReq]="ignoreReq" [group]="group" *ngSwitchCase="questionTypes.Text"></app-question-textbox>
+      <app-question-datebox [question]="q" [ignoreReq]="ignoreReq" [group]="group" *ngSwitchCase="questionTypes.Date"></app-question-datebox>
+    </div>
+  </div>
+</div>

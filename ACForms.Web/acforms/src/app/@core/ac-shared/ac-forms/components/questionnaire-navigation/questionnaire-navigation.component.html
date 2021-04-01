@@ -1,0 +1,8 @@
+<div class="d-flex justify-content-between navigation-bar">
+    <span><button class="btn btn-secondary" [disabled]="prevDisabled" (click)="prev()">Previous</button></span>
+    <span class="btn navigation-title">{{currentSectionTitle}}</span>
+    <span>
+        <button class="btn btn-success" (click)="submit()">Submit</button>
+        <button class="btn btn-secondary" [disabled]="nextDisabled" (click)="next()">Next</button>
+    </span>
+</div>

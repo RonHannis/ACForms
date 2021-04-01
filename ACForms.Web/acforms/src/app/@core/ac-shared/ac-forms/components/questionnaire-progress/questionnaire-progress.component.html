@@ -1,0 +1,4 @@
+<ul>
+    <li *ngFor="let section of sections; index as i" (click)="onSelectSection(i)"
+        [ngClass]="{'active': i===currentSectionId}">{{section.label}}</li>
+</ul>

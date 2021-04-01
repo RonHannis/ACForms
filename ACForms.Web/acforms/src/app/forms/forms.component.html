@@ -1,0 +1,4 @@
+<div class="form-container">
+  <app-questionnaire [form]="formgroup" *ngIf="form$ | async" [questionnaire]="form$ | async" [status]="status$ | async" (changed)="onChange($event)" (submitted)="onSubmit($event)"></app-questionnaire>
+</div>
+<div class="loading" *ngIf="loadingStatus$ | async">{{loadingStatus$ | async}}&#8230;</div>

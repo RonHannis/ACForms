@@ -1,0 +1,27 @@
+<div class="row">
+    <mat-form-field appearance="fill">
+        <mat-label>Drug</mat-label>
+        <input type="text" matInput [(ngModel)]="drug" />
+    </mat-form-field>
+</div>
+<div class="row">
+    <mat-form-field appearance="fill">
+        <mat-label>Dose</mat-label>
+        <input type="text" matInput [(ngModel)]="dose" />
+    </mat-form-field>
+</div>
+<div class="row">
+    <mat-form-field appearance="fill">
+        <mat-label>Frequency</mat-label>
+        <input type="text" matInput [(ngModel)]="frequency" />
+    </mat-form-field>
+</div>
+<div class="row">
+    <mat-form-field appearance="fill">
+        <mat-label>Associated Diagnosis</mat-label>
+        <input type="text" matInput [(ngModel)]="associatedDiagnosis" />
+    </mat-form-field>
+</div>
+<div class="row">
+    <mat-checkbox class="example-margin" [(ngModel)]="continueTreatment">Continue Management/Plan?</mat-checkbox>
+</div>

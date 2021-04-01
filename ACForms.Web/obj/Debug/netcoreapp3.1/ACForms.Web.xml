@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ACForms.Web</name>
+    </assembly>
+    <members>
+        <member name="P:ACForms.Web.DAL.Models.FormEntryArchive.Data">
+            <summary>
+            Raw input information from the form
+            </summary>
+        </member>
+        <member name="P:ACForms.Web.DAL.Models.FormEntryArchive.FormSchema">
+            <summary>
+            Form schema definition
+            </summary>
+        </member>
+        <member name="P:ACForms.Web.DAL.Models.FormEntryArchive.Snapshot">
+            <summary>
+            Serialized ACQuestionnaire including data values
+            </summary>
+        </member>
+        <member name="T:ACForms.Web.Processors.FormProcessor">
+            <summary>
+            wrapper class to resolve form processors at run-time
+            </summary>
+        </member>
+        <member name="T:ACForms.Web.Processors.PreFillProcessor">
+            <summary>
+            wrapper class to resolve pre-fill processors at run-time
+            </summary>
+        </member>
+        <member name="T:ACForms.Web.Processors.Submission.SendConditions">
+            <summary>
+            [{
+              "when":"Always",
+              "message":{
+                "from":"bla@bla.com",
+                "subject":"this is a message",
+                "template":"bla-email-always",
+                "recipients":[{
+                  "level":"To",
+                  "location":"Static",
+                  "address":"bla-to@bla.com"
+                },{
+                  "level":"Bcc",
+                  "location":"FormValue",
+                  "address":"form-key-for-emailaddress"
+                }]
+              }
+            }]
+            </summary>
+        </member>
+        <member name="P:ACForms.Web.Processors.Submission.RecipientSpec.Level">
+            <summary>
+            To, Cc, Bcc
+            </summary>
+        </member>
+        <member name="P:ACForms.Web.Processors.Submission.RecipientSpec.Location">
+            <summary>
+            address located here in the config or in the form
+            </summary>
+        </member>
+        <member name="P:ACForms.Web.Processors.Submission.RecipientSpec.Address">
+            <summary>
+            email address for Static or form key for FormValue
+            </summary>
+        </member>
+        <member name="T:ACForms.Web.Processors.Submission.NullFormSubmissionProcessor">
+            <summary>
+            Empty processor in case there's nothing to map to
+            </summary>
+        </member>
+    </members>
+</doc>

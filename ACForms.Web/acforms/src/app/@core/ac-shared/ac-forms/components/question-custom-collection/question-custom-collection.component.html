@@ -1,0 +1,54 @@
+<div class="question">
+  <h3>
+    {{question.label}} <span *ngIf="question.required">*</span>
+    <span *ngIf="q.invalid" class="mat-error">
+      <span *ngIf="q.errors.required">
+        (required)
+      </span>
+    </span>
+  </h3>
+  <div [ngSwitch]="question.collectionType">
+    <app-custom-collection-template-textbox [value]="tempValue" [reset]="reset" [key]="'temp-' + question.key + i" [mask]="question.mask" [hint]="question.hint"
+                                            (changed)="onTempChanged($event)" (valid)="onTempValidChanged($event)" *ngSwitchCase="collectionTypes.Text">
+    </app-custom-collection-template-textbox>
+    <app-custom-collection-template-diagnosis [value]="tempValue" [key]="'temp-' + question.key + i"
+                                              (changed)="onTempChanged($event)" *ngSwitchCase="collectionTypes.Diagnosis">
+    </app-custom-collection-template-diagnosis>
+    <app-custom-collection-template-medication [value]="tempValue" [key]="'temp-' + question.key + i"
+                                               (changed)="onTempChanged($event)" *ngSwitchCase="collectionTypes.Medication">
+    </app-custom-collection-template-medication>
+    <app-custom-collection-template-relationship-diagnosis-age [value]="tempValue" [key]="'temp-' + question.key + i"
+                                                               (changed)="onTempChanged($event)" *ngSwitchCase="collectionTypes.RelationshipDiagnosisAge">
+    </app-custom-collection-template-relationship-diagnosis-age>
+    <app-custom-collection-template-surgery [value]="tempValue" [key]="'temp-' + question.key + i"
+                                            (changed)="onTempChanged($event)" *ngSwitchCase="collectionTypes.Surgery">
+    </app-custom-collection-template-surgery>
+    <app-custom-collection-template-children [value]="tempValue" [key]="'temp-' + question.key + i"
+                                            (changed)="onTempChanged($event)" *ngSwitchCase="collectionTypes.Children">
+    </app-custom-collection-template-children>
+  </div>
+  <button mat-raised-button [disabled]="!tempValid" (click)="add()">Click to Add</button>
+</div>
+<hr />
+<label># of items: {{value.length}}</label>
+<mat-list>
+  <mat-list-item *ngFor="let v of value; let odd = odd; let i = index">
+    <mat-icon class="clickable-icon" (click)="delete(i)" aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+    <div class="value-container" [innerHTML]="parseValue(v)"></div>
+  </mat-list-item>
+</mat-list>
+<!--<div *ngFor="let v of value; let odd = odd; let i = index" class="card">
+  <div class="card-header">
+    <button (click)="delete(i)">Delete</button>
+  </div>
+  <div [ngSwitch]="question.collectionType" class="card-body">
+    <app-custom-collection-template-textbox [value]="v" *ngSwitchCase="collectionTypes.Text"
+                                            [key]="question.key + i" (changed)="onChanged()"></app-custom-collection-template-textbox>
+    <app-custom-collection-template-diagnosis [value]="v" *ngSwitchCase="collectionTypes.Diagnosis"
+                                              [key]="question.key + i" (changed)="onChanged()"></app-custom-collection-template-diagnosis>
+    <app-custom-collection-template-medication [value]="v" *ngSwitchCase="collectionTypes.Medication"
+                                               [key]="question.key + i" (changed)="onChanged()"></app-custom-collection-template-medication>
+    <app-custom-collection-template-surgery [value]="v" *ngSwitchCase="collectionTypes.Surgery"
+                                            [key]="question.key + i" (changed)="onChanged()"></app-custom-collection-template-surgery>
+  </div>
+</div>-->

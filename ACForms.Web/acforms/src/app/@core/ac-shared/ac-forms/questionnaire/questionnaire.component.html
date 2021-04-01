@@ -1,0 +1,54 @@
+<mat-card>
+  <h1 class="page-header">{{questionnaire.title}}</h1>
+  <hr />
+  <div class="d-flex">
+    <div class="form-content">
+      <div *ngIf="status === 'Submitted'">
+        Thank you, your form has been submitted. You may close this window.
+      </div>
+      <form *ngIf="status !== 'Submitted' && form" [formGroup]="form">
+        <mat-horizontal-stepper [linear]="true">
+          <ng-container *ngFor="let section of questionnaire.sections; index as i">
+            <ng-container *ngIf="showSteps.length > 0; else noSkipSteps">
+              <mat-step [stepControl]="form.get(section.key)" *ngIf="isShowStep(section.key)">
+                <ng-template matStepLabel>{{section.label}}</ng-template>
+                <app-custom-questionnaire-section [section]="section" [group]="form.get(section.key)" (onSelect)="skipStep($event)">
+                </app-custom-questionnaire-section>
+                <div class="stepper-nav">
+                  <button mat-raised-button matStepperPrevious *ngIf="i > 0">Back</button>
+                  <button mat-raised-button matStepperNext>Next</button>
+                </div>
+              </mat-step>
+            </ng-container>
+            <ng-template #noSkipSteps>
+              <mat-step [stepControl]="form.get(section.key)">
+                <ng-template matStepLabel>{{section.label}}</ng-template>
+                <app-custom-questionnaire-section [section]="section" [group]="form.get(section.key)" (onSelect)="skipStep($event)">
+                </app-custom-questionnaire-section>
+                <div class="stepper-nav">
+                  <button mat-raised-button matStepperPrevious *ngIf="i > 0">Back</button>
+                  <button mat-raised-button matStepperNext>Next</button>
+                </div>
+              </mat-step>
+            </ng-template>
+          </ng-container>
+          <mat-step [stepControl]="form.get('finalize')">
+            <ng-template matStepLabel>Finalize</ng-template>
+            <app-file-attachments *ngIf="questionnaire.allowAttachments" [attachments]="questionnaire.attachments" [group]="form.get('finalize')"></app-file-attachments>
+            <h2 class="section-title">Please review that you have completed this form completely and accurately. Click &quot;Submit&quot; below to finish.</h2>
+            <div class="stepper-nav">
+              <button mat-raised-button matStepperPrevious>Back</button>
+              <button mat-raised-button color="primary" (click)="onSubmitted()" [disabled]="!form.valid">Submit</button>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </form>
+    </div>
+  </div>
+  <hr />
+  <div class="d-flex">
+    <ul>
+      <li *ngFor="let note of questionnaire.notes">{{note}}</li>
+    </ul>
+  </div>
+</mat-card>

@@ -1,0 +1,16 @@
+.card {
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+.value-container {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+
+:host ::ng-deep {
+  .mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+    height: unset;
+  }
+}
