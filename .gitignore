@@ -1,2 +1,8 @@
 
-ACForms.Web/appsettings.json
+ACForms.Web/appsettings.Certification.json
+ACForms.web/appsettings.Development.json
+ACForms.Registration/
+ACForms.UiPath/
+ACForms.Web/bin
+ACForms.Web/obj
+ACForms.Web/processors
