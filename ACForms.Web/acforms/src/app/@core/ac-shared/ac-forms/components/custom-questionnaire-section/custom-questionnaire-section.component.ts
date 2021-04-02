@@ -40,11 +40,12 @@ export class CustomQuestionnaireSectionComponent implements OnInit {
   }
 
   onOptionChanged($event): void {
-    if ($event && $event['condition']['step'].length > 0) {
-      this.onSelect.emit($event);
-    } else {
-      this.selectedOption = $event;
-    }
+    this.selectedOption = $event;
+    // if ($event && $event['condition']['step'].length > 0) {
+    //   this.onSelect.emit($event);
+    // } else {
+    //   this.selectedOption = $event;
+    // }
   }
 
   onTextChange($event): void {

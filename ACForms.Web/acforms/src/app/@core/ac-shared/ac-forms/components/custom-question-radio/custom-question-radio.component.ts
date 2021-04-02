@@ -30,14 +30,9 @@ export class CustomQuestionRadioComponent implements OnInit {
           value: $event.value
         };
         this.onSelect.emit(optionObj);
-      } else if (this.question['condition']) {
-        const optionObj = {
-          condition: this.question['condition'],
-          value: $event.value
-        };
-        this.onSelect.emit(optionObj);
-      }
+      } 
     }
   }
 
 }
+
